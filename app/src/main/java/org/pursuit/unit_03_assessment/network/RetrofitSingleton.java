@@ -3,6 +3,7 @@ package org.pursuit.unit_03_assessment.network;
 import retrofit2.Retrofit;
 import retrofit2.converter.gson.GsonConverterFactory;
 
+// TODO 1: 5pts: GJ
 public class RetrofitSingleton {
 
     private static Retrofit ourInstance;

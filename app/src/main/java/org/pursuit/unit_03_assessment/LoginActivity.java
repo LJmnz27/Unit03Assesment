@@ -18,6 +18,13 @@ import android.widget.TextView;
 
 import org.pursuit.unit_03_assessment.R;
 
+/**
+ * Total points: 19/25
+ *
+ * Good job. You have a lot of extra code that's unneeded if you read the TODO's more carefully.
+ * A lot of extra empty spaces between your code that makes it look messy.
+ * You could also separate out some code into methods.
+ */
 public class LoginActivity extends AppCompatActivity {
 
     private EditText emailView;
@@ -47,6 +54,7 @@ public class LoginActivity extends AppCompatActivity {
 
         SharedPreferences sharedPreferences = getApplicationContext().getSharedPreferences(SHARED_PREFS_KEY, MODE_PRIVATE);
 
+        // TODO 1: 5pts: You should be using a static final field for keys!
         if (sharedPreferences.getBoolean("isChecked", false)) {
             emailView.setText(sharedPreferences.getString("username", ""));
             passwordView.setText(sharedPreferences.getString("password", ""));
@@ -97,12 +105,14 @@ public class LoginActivity extends AppCompatActivity {
             cancel = true;
         } else {
 
+            // TODO 3: 5pts: good job, but you should be using static final fields for keys.
             if (usernameCheckbox.isChecked()) {
                 editor.putString("username", emailView.getText().toString());
                 editor.putString("password", passwordView.getText().toString());
                 editor.putBoolean("isChecked", usernameCheckbox.isChecked());
                 editor.apply();
             } else {
+                // TODO 4: 1pt: You didn't reset the username and checkbox in sharedprefs.
                 editor.putBoolean("isChecked", usernameCheckbox.isChecked());
                 editor.apply();
             }
@@ -110,9 +120,11 @@ public class LoginActivity extends AppCompatActivity {
             String checkUser = "user" + emailView.getText().toString();
             String checkPassword = "password" + passwordView.getText().toString();
 
+            // TODO 2: 3pts: You should be checking against a string resource, not sharedpreferences
             if (emailView.getText().toString().equalsIgnoreCase(login.getString(checkUser, ""))
                     && emailView.getText().toString().equals(login.getString(checkPassword, ""))) {
 
+                // TODO 5: 5pts: You don't need to put extra.
                 Intent intent = new Intent(LoginActivity.this, RecyclerActivity.class);
                 intent.putExtra("currentUser",emailView.getText().toString());
                 intent.putExtra("currentPassword",passwordView.getText().toString());

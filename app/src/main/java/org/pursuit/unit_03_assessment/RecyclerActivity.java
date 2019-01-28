@@ -3,6 +3,13 @@ package org.pursuit.unit_03_assessment;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 
+/**
+ * Total points: 39/50
+ *
+ * If you ran your code, you would've realized that you put your network call in the wrong place.
+ * You never even reference your recyclerview in your activity, so how can you show any information?
+ * Otherwise, everything else was set up correctly! You just need to think about where to put your code.
+ */
 public class RecyclerActivity extends AppCompatActivity {
 
 
@@ -12,7 +19,6 @@ public class RecyclerActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_recycler);
-
 
 
 

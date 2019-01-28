@@ -11,6 +11,7 @@ import org.pursuit.unit_03_assessment.view.PlanetViewHolder;
 
 import java.util.List;
 
+// TODO 5: 3pts: So close, but why is your viewholder inflating an activity layout?
 public class PlanetAdapter extends RecyclerView.Adapter<PlanetViewHolder> {
 
     List<String> planetList;
