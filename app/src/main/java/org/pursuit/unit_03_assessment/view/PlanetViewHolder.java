@@ -21,6 +21,7 @@ import retrofit2.Callback;
 import retrofit2.Response;
 import retrofit2.Retrofit;
 
+// TODO 6: 5pts: Noice
 public class PlanetViewHolder extends RecyclerView.ViewHolder {
     private static final String TAG = "image_call";
     private SharedPreferences sharedPreferences;
@@ -34,7 +35,10 @@ public class PlanetViewHolder extends RecyclerView.ViewHolder {
         sharedPreferences = itemView.getContext().getApplicationContext().getSharedPreferences(TAG, Context.MODE_PRIVATE);
     }
     public void onBind (final String planet){
+        // TODO 8: 5pts: woot
         planetTextView.setText(planet);
+
+        // TODO 9: 5pts: ez
         itemView.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -45,6 +49,9 @@ public class PlanetViewHolder extends RecyclerView.ViewHolder {
                     intent.putExtra("image", sharedPreferences.getString((planet + "_image"), null));
                     itemView.getContext().startActivity(intent);
                 } else {
+
+                    // TODO 4: 1pt: Why are you making your network call inside your viewholder? What is your viewholder going to show if you don't make a network call before it?
+                    // TODO 7: 0pt: Your network call should be in activity so that you can pass that information INTO your recyclerview.
                     Retrofit retrofit = RetrofitSingleton.getInstance();
                     PlanetService planetService = retrofit.create(PlanetService.class);
                     Call<PlanetImage> planetsCall = planetService.getPlanetImage(planet);
@@ -52,6 +59,7 @@ public class PlanetViewHolder extends RecyclerView.ViewHolder {
                         @Override
                         public void onResponse(Call<PlanetImage> call, Response<PlanetImage> response) {
                             Log.d(TAG, "onResponse: " + response.body().getPlanets());
+                            // TODO 10: 1pt: You're supposed to pass in name, number, and URL.
                             Intent intent = PlanetViewHolder.this.intent.putExtra("image", String.valueOf(response.body().getPlanets()));
                             SharedPreferences.Editor editor = sharedPreferences.edit();
                             editor.putString(planet+ "_image", response.body().getPlanets().toString());

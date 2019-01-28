@@ -5,6 +5,13 @@ import android.os.Bundle;
 
 import org.pursuit.unit_03_assessment.R;
 
+/**
+ * Total points: 0/25
+ *
+ * I think you got confused here. Display activity is completely separate from your recyclerview.
+ * You show your recyclerview in activity_recycler. Then when you click on an item in your recyclerview,
+ * it navigates you to DisplayActivity with the information you just clicked on.
+ */
 public class DisplayActivity extends AppCompatActivity {
 
     @Override
